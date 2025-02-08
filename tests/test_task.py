@@ -1,8 +1,17 @@
 import pytest
 from fastapi.testclient import TestClient
 from app.main import app
+from app.repositories.memory import MemoryRepository
+from app.api.dependencies import get_task_repository
 
 client = TestClient(app)
+
+@pytest.fixture(autouse=True)
+def reset_memory_repository():
+    # Reset the memory repository before each test
+    memory_repository = get_task_repository()
+    memory_repository.tasks = {}
+    memory_repository.counter = 1
 
 def test_create_task():
     response = client.post("/tasks/", json={"title": "Test Task", "description": "Test Description"})
