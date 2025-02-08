@@ -24,10 +24,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m venv venv
-        . venv/bin/activate
+        . ./venv/bin/activate
         pip install -r ms-reactor-api/requirements.txt
 
     - name: Run tests
       run: |
-        . venv/bin/activate
+        . ./venv/bin/activate
         pytest ms-reactor-api/tests
