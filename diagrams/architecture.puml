@@ -1,0 +1,16 @@
+@startuml
+!define RECTANGLE class
+
+RECTANGLE "API Gateway" as APIGateway {
+}
+
+RECTANGLE "Service A" as ServiceA {
+}
+
+RECTANGLE "Service B" as ServiceB {
+}
+
+APIGateway --> ServiceA : "Request"
+APIGateway --> ServiceB : "Request"
+
+@enduml
