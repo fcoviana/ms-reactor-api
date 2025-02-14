@@ -24,6 +24,11 @@ jobs:
         source venv/bin/activate
         pip install -r requirements.txt
 
+    - name: Create startup script
+      run: |
+        echo 'gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app' > startup.sh
+        chmod +x startup.sh
+
     - name: Archive files
       run: zip -r myapp.zip .
 
